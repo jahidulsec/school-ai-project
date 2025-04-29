@@ -50,6 +50,7 @@
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/inter.ttf');
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 
@@ -57,7 +58,7 @@
   --font-inter: "Inter";
 
 
-  --radius: 0.3rem;
+  --radius: 1rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);

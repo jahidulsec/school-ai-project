@@ -5,9 +5,12 @@ import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Video, X } from "lucide-react";
 import * as faceapi from "face-api.js";
+import { useRouter } from "next/navigation";
 
 export default function HeaderSection() {
   const [isPlaying, setPlaying] = useState(false);
+
+  const router = useRouter();
 
   const playVideo = () => {
     const video = document.getElementById("video") as HTMLVideoElement;
@@ -46,20 +49,23 @@ export default function HeaderSection() {
         </h2>
       </div>
 
-      <Button
-        variant={isPlaying ? "destructive" : "default"}
-        onClick={playVideo}
-      >
-        {!isPlaying ? (
-          <>
-            <Video /> Start Attendace
-          </>
-        ) : (
-          <>
-            <X /> Close
-          </>
-        )}
-      </Button>
+      {!isPlaying ? (
+        <Button variant={"default"} onClick={playVideo}>
+          <Video /> Start Attendace
+        </Button>
+      ) : (
+        <Button variant={"destructive"} onClick={() => {
+          const video = document.getElementById("video") as HTMLVideoElement;
+
+          video.srcObject = null
+
+          navigator.mediaDevices.getUserMedia({video: false})
+
+          setPlaying(false)
+        }}>
+          <X /> Close
+        </Button>
+      )}
     </header>
   );
 }

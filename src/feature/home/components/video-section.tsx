@@ -1,14 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function VideoSection() {
-//   useEffect(() => {
-
-
-//     startVideo();
-//   }, []);
 
   const startVideo = () => {
     const video = document.getElementById("video") as HTMLVideoElement;
